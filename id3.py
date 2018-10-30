@@ -60,8 +60,8 @@ if __name__ == "__main__":
     states = []
     attributes_dict = {}
     
-    for line in lines:
-    #for line in fileinput.input():
+    #for line in lines:
+    for line in fileinput.input():
         if "@attribute" in line:
             words = re.split("[ \t]+|[ \t]+$", line,2)
             attributes.append(words[1])
