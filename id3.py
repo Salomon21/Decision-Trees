@@ -6,12 +6,12 @@ from node import *
 from entropy import *
 
 def ID3(node, root, data_types, visited_list):
-	
+
 	new_list = copy.deepcopy(visited_list)
 	node.entropy = calculate_entropy(node, root, data_types)
 	#print(node)
 	if float(node.entropy) == 0.0:
-		
+
 		#print("LEAF NODE")
 		node.answer = node.dataframe[1][-1]
 		#print(node.answer)
@@ -34,12 +34,12 @@ def ID3(node, root, data_types, visited_list):
 		new_dataframe = []
 		new_dataframe.append(root.dataframe[0])
 		new_node = Node(element, None, [], node, new_number, None, None, node.dataframe[0][new_number])
-		
+
 		for row in node.dataframe:
-			
+
 			if row[new_number] == element:
 				new_dataframe.append(row)
-		
+
 		new_node.dataframe = new_dataframe
 		node.children.append(new_node)
 		ID3(new_node, root, data_types, new_list)
@@ -93,4 +93,3 @@ if __name__ == "__main__":
 	for element in data:
 		dataframe.append(element)
 	decision_tree(dataframe, data_types)
-	
